@@ -12,13 +12,6 @@
 
 #include "libft.h"
 
-static size_t	ft_isdeli(char const *s, char c, size_t i)
-{
-	if (s[i] == c)
-		return (1);
-	return (0);
-}
-
 static char	*ft_word(char const *s, char c, size_t *i)
 {
 	size_t	word;
@@ -56,11 +49,11 @@ static size_t	ft_count_word(char const *s, char c)
 	count = 0;
 	while (s[i])
 	{
-		while (ft_isdeli(s, c, i))
+		while (s[i] == c)
 			i++;
-		if (ft_isalpha(s[i]))
+		if (ft_isprint(s[i]))
 			count++;
-		while (ft_isalpha(s[i]))
+		while (ft_isprint(s[i]) && s[i] != c)
 			i++;
 	}
 	return (count);
@@ -79,30 +72,39 @@ static void	ft_free(char **ptr)
 	free(ptr);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**ft_make(char const *s, char c, char **ptr, size_t len)
 {
-	size_t	len;
-	size_t	i;
-	size_t	y;
-	char	**ptr;
+	size_t y;
+	size_t i;
 
-	if (!s)
-		return (NULL);
-	i = 0;
 	y = 0;
-	len = ft_count_word(s, c);
-	ptr = malloc(sizeof(char *) * len + 1);
-	if (!ptr)
-		return (NULL);
+	i = 0;
 	while (y < len)
 	{
 		while (s[i] == c)
 			i++;
 		ptr[y] = ft_word(s, c, &i);
 		if (ptr[y] == NULL)
+		{
 			ft_free(ptr);
+			break ;
+		}
 		y++;
 	}
 	ptr[y] = NULL;
 	return (ptr);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	size_t	len;
+	char	**ptr;
+
+	if (!s)
+		return (NULL);
+	len = ft_count_word(s, c);
+	ptr = malloc(sizeof(char *) * (len + 1));
+	if (!ptr)
+		return (NULL);
+	return (ft_make(s, c, ptr, len));
 }

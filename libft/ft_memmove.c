@@ -6,10 +6,19 @@
 /*   By: abenba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 07:43:52 by abenba            #+#    #+#             */
-/*   Updated: 2024/10/25 15:15:06 by abenba           ###   ########.fr       */
+/*   Updated: 2024/10/28 19:41:00 by abenba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+
+static void	ft_overlap(unsigned char *d, unsigned char *s, size_t len)
+{
+	while (len)
+	{
+		d[len - 1] = s[len - 1];
+		len--;
+	}
+}
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
@@ -24,11 +33,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	i = 0;
 	if (d > s)
 	{
-		while (len)
-		{
-			d[len - 1] = s[len - 1];
-			len--;
-		}
+		ft_overlap(d, s, len);
 	}
 	else
 	{

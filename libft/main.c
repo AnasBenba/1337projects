@@ -57,6 +57,7 @@
     char *s2 = "$ \t";
     char *result = ft_strtrim(s1, s2);
     printf("%s\n", result);
+    free(result);
 }*/
 
 // Test ft_memset
@@ -97,7 +98,8 @@
 // Test ft_split
 /*int main()
 {
-    char *s = "    Anas f   s   as a   benba    ";
+    char *s = "hell 77u77#$5R@eb 4234ebrgy3477^F 3523538482735t235 ^TT#@$^723 235tgG^&@34b 235t25782357hzv2 2535235guy^#$!@V$^324 ";
+    //char *s = "s b db f";
     char c = ' ';
     char **p =  ft_split(s, c);
     int i = 0;
@@ -111,6 +113,7 @@
     while (p[i])
     {
         free(p[i]);
+        i++;
     }
     free(p);
 }*/
@@ -119,10 +122,10 @@
 /*int main()
 {
     char d[] = "abcde";
-    //char s[] = "abcde";
+    char s[] = "abcde";
     
-    //memmove(NULL, NULL, 2);
-    //ft_memmove(NULL, NULL, 2);
+    memmove(d+1, d, 2);
+    ft_memmove(s+1, s, 2);
 
     printf("memmove: %s\n", memmove(d, d, 2));
     printf("ft_memmove: %s\n", ft_memmove(d, d, 2));
@@ -133,7 +136,7 @@
 // Test ft_itoi
 /*int main()
 {
-    int c;
+    int c = 9999999999;
     int i = 0;
     char *n = ft_itoa(c);
     while (n[i])
@@ -144,7 +147,7 @@
 }*/
 
 //test ft_strmapi
-/*char change_case(unsigned int i, char c)
+/*char change_character(unsigned int i, char c)
 {
     if (i % 2 == 0)
         c = '0';
@@ -155,13 +158,13 @@
 
 int main()
 {
-    char *s = NULL;
-    char *new = ft_strmapi(s, &change_case);
+    char *s = "Anas";
+    char *new = ft_strmapi(s, NULL);
     printf("%s", new);    
 }*/
 
 //test ft_striteri
-/*void change_case(unsigned int i, char *c)
+/*void change_character(unsigned int i, char *c)
 {
     if (i % 2 == 0)
         *c = '0';
@@ -172,7 +175,7 @@ int main()
 int main()
 {
     char s[] = "anas benba";
-    ft_striteri(s, &change_case);
+    ft_striteri(s, NULL);
     printf("%s", s);
 }*/
 
@@ -265,14 +268,251 @@ int main()
 }*/
 
 // Test ft_strlcat
+/*int main()
+{
+    char c[18] = "Hello, World!";
+    char s[18] = "Hello, World!";
+    int result = strlcat(c, "hello", 18);
+    int result1 = ft_strlcat(s, "hello", 18);
+    printf("len result: %d\n", result);
+    printf("strlcat: %s\n", c);
+    printf("len result1 : %d\n", result1);
+    printf("ft_strlcat: %s\n", s);
+}*/
+
+// Test ft_strnstr
+/*int main()
+{
+    char src[] = "hello am fine";
+    printf("%s\n", ft_strnstr(src,NULL,8));
+    return 0;
+}*/
+
+// Test ft_toupper
+/*int main()
+{
+    char c[] = "hhhhh";
+    printf("%c", ft_toupper(c[0]));
+}*/
+
+//Test ft_tolower
+/*int main()
+{
+    char *c = "HHHH";
+    printf("%c", tolower(c[0]));
+}*/
+
+//Test ft_strchr
+/*int main()
+{
+    char *s = "abcdefghijkl";
+    char *r = ft_strchr(s, '\0');
+    char *r1 = strchr(s, '\0');
+    printf("%s\n", r);
+    printf("%s", r1);
+}*/
+
+// Test ft_strrchar
+/*int main()
+{
+    char *s = "abcdefghijikl";
+    char *r = ft_strrchr(s, 'i');
+    char *r1 = strrchr(s, 'i');
+    printf("%s\n", r);
+    printf("%s", r1);
+}*/
+
+// Test ft_strncmp
+/*int main()
+{
+    char *c = NULL;
+    char *s =  "Anas";
+    printf("%d\n", strncmp(c, s, 2));
+    printf("%d", ft_strncmp(c, s, 2));
+}*/
+
+// Test ft_memchr
+/*int main()
+{
+    char *c = "hello world";
+    char *b = memchr(c, 'o', sizeof(c));
+    //int i = 0;
+    //while (i < 3)
+    //{
+        printf("%s ", b);
+        //i++;
+    //}
+}*/
+
+// Test ft_memcmp
+/*int main()
+{
+    int c[] = {1, 2, 3, 4}; ///&c[0] == 0x7ffee5957760
+    int r[] = {1, 2, 3}; //&r[3] == 0x7ffee5957760
+    printf("%p|%p|\n", &c[0], &r[3]);
+    printf("%d\n", ft_memcmp(c, r, sizeof(c)));
+    printf("%d\n", memcmp(c, r, sizeof(c)));
+}*/
+
+// Test ft_strnstr
+/*int main()
+{
+    char *str = "Hello world";
+    char *s = "";
+    printf("%s\n", ft_strnstr(str, s, 5));
+    printf("%s\n", strnstr(str, s, 5));
+}*/
+
+// Test atoi
+/*int main()
+{
+    char *c = "12345672891234567899";
+    printf("%d\n", ft_atoi(c));
+    printf("%d", atoi(c));
+}*/
+
+// Test ft_strdup
+/*int main()
+{
+    char *c = NULL;
+    //printf("%s\n", ft_strdup(c));
+    printf("%s\n", strdup(c));
+}*/
+
+// Test ft_substr
+/*int main()
+{
+    char *c ="Anas";
+    size_t len = -1;
+    char *t = ft_substr(c, 0, len);
+    printf("%s", t);
+    if (t)
+        free(t);
+    return (0);
+}*/
+
+// Test ft_strjoin
+/*int main()
+{
+    char *c = "shhs";
+    char *s = NULL;
+    char *r = ft_strjoin(c, s);
+    printf("%s", r);
+}*/
+
+// Test ft_lstnew
+/*int main()
+{
+    int s = 10;
+    int *c = &s;
+    t_list *ptr = ft_lstnew(c);
+    printf("%d %p", *((int *)ptr->content), ptr->next);
+}*/
+
+// Test ft_lstadd_front
+/*int main()
+{
+    char *s = "Hello";
+    char *r = "World";
+    t_list *head = ft_lstnew(s);
+    t_list *new = ft_lstnew(r);
+    t_list **p = NULL;
+    ft_lstadd_front(p, new);
+    t_list *p1 = head;
+    while (p1)
+    {
+        printf("%s ", p1->content);
+        p1 = p1->next;
+    }   
+    return (0);
+}*/
+
+// ft_lstsize
+/*int main()
+{
+    char *s = "Hello";
+    char *r = "World";
+    char *y = "hey";
+    t_list *head = ft_lstnew(s);
+    t_list *new = ft_lstnew(r);
+    t_list *new1 = ft_lstnew(y);
+    head->next = new;
+    new->next = new1;
+    int i = ft_lstsize(NULL);
+    printf("%d", i);
+    return (0);
+}*/
+
+// Test ft_lstlast
+/*int main()
+{
+    char *s = "Hello";
+    char *r = "World";
+    char *y = "hey";
+    t_list *head = ft_lstnew(s);
+    t_list *new = ft_lstnew(r);
+    t_list *new1 = ft_lstnew(y);
+    head->next = new;
+    new->next = new1;
+    t_list *i = ft_lstlast(head);
+    printf("%s", i->content);
+    return (0);
+}*/
+
+// Test ft_lstadd_back
+/*int main()
+{
+    char *s = "Hello";
+    char *r = "World";
+    char *y = "hey";
+    t_list *head = ft_lstnew(s);
+    t_list *new = ft_lstnew(r);
+    t_list *new1 = ft_lstnew(y);
+    head->next = new;
+    t_list **p = &head;
+    ft_lstadd_back(p, new1);
+    while ((*p))
+    {
+        printf("%s ", (*p)->content);
+        (*p) = (*p)->next;
+    }
+    return (0);
+}*/
+
+// Test ft_lstdelone
+void ft_free(void *s)
+{
+    free(s);
+}
+
 int main()
 {
-    char c[15] = "Hello, World!";
-    char s[15] = "Hello, World!";
-    int result = strlcat(c, "hello", 2);
-    int result1 = ft_strlcpy(s, NULL, 2);
-    printf("len result: %d\n", result);
-    printf("strlcpy: %s\n", dest);
-    printf("len result result: %d\n", result1);
-    printf("ft_strlcpy: %s\n", dest);
+    char *s = "Hello";
+    char *r = "World";
+    char *y = "hey";
+    t_list *head = ft_lstnew(s);
+    t_list *new = ft_lstnew(r);
+    t_list *new1 = ft_lstnew(y);
+    head->next = new;
+    t_list **p = &head;
+    t_list *p1;
+    ft_lstadd_back(p, new1);
+    p1 = head;
+    while (p1)
+    {
+        printf("%s ", p1->content);
+        p1 = p1->next;
+    }
+    printf("\n");
+    p1 = head->next;
+    void *del = &ft_free;
+    ft_lstdelone(p1, del);
+    printf("%s\n", p1->content);
+    p1 = head;
+    while (p1)
+    {
+        printf("%s ", p1->content);
+        p1 = p1->next;
+    }
+    return (0);
 }

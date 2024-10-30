@@ -6,10 +6,9 @@
 /*   By: abenba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 11:56:09 by abenba            #+#    #+#             */
-/*   Updated: 2024/10/26 12:25:25 by abenba           ###   ########.fr       */
+/*   Updated: 2024/10/28 19:55:02 by abenba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 static size_t	ft_start(char const *s1, char const *set)
@@ -64,9 +63,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	char	*ptr;
 
-	last = ft_strlen(s1) - 1;
-	if (!s1)
+	if (!s1 || !set)
 		return (NULL);
+	last = ft_strlen(s1) - 1;
 	i = ft_start(s1, set);
 	end = ft_end(s1, set, last);
 	ptr = malloc(end - i + 2);
@@ -79,6 +78,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 		y++;
 		i++;
 	}
-	ptr[i] = '\0';
+	ptr[y] = '\0';
 	return (ptr);
 }

@@ -9,6 +9,7 @@
 /*   Updated: 2024/10/26 11:40:27 by abenba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
@@ -27,5 +28,7 @@ char	*ft_strrchr(const char *s, int c)
 			index = i;
 		i++;
 	}
+	if (index == 0)
+		return (NULL);
 	return (&str[index]);
 }

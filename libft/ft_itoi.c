@@ -23,7 +23,7 @@ static char	*ft_sign(int i, int n)
 		return (NULL);
 	num[0] = '-';
 	num[i + 1] = '\0';
-	while (n % 10 != 0)
+	while (n)
 	{
 		y = n % 10;
 		n = n / 10;
@@ -42,7 +42,7 @@ static char	*ft_pnum(int i, int n)
 	if (!num)
 		return (NULL);
 	num[i] = '\0';
-	while (n % 10 != 0)
+	while (n)
 	{
 		y = n % 10;
 		n = n / 10;
@@ -82,7 +82,7 @@ char	*ft_itoa(int n)
 		n *= -1;
 	}
 	y = n;
-	while (y % 10 != 0)
+	while (y)
 	{
 		y = y / 10;
 		i++;
