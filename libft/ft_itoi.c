@@ -72,10 +72,10 @@ char	*ft_itoa(int n)
 
 	i = 0;
 	sign = 1;
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
 	if (n == 0)
-	{
 		return (ft_iszero());
-	}
 	if (n < 0)
 	{
 		sign *= -1;

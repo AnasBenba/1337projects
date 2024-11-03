@@ -6,7 +6,7 @@
 /*   By: abenba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 12:11:32 by abenba            #+#    #+#             */
-/*   Updated: 2024/10/27 12:13:00 by abenba           ###   ########.fr       */
+/*   Updated: 2024/11/01 14:48:11 by abenba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	size_t			len;
 	unsigned int	i;
-	char	*new_str;
+	char			*new_str;
 
 	if (!s || !f)
 		return (NULL);

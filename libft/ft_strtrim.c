@@ -6,7 +6,7 @@
 /*   By: abenba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 11:56:09 by abenba            #+#    #+#             */
-/*   Updated: 2024/10/28 19:55:02 by abenba           ###   ########.fr       */
+/*   Updated: 2024/11/02 20:03:16 by abenba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -55,22 +55,19 @@ static size_t	ft_end(char const *s1, char const *set, size_t last)
 	return (end);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+static char	*ft_valid(char *ptr)
 {
-	size_t	i;
-	size_t	y;
-	size_t	last;
-	size_t	end;
-	char	*ptr;
-
-	if (!s1 || !set)
-		return (NULL);
-	last = ft_strlen(s1) - 1;
-	i = ft_start(s1, set);
-	end = ft_end(s1, set, last);
-	ptr = malloc(end - i + 2);
+	ptr = malloc(1);
 	if (!ptr)
 		return (NULL);
+	ptr[0] = '\0';
+	return (ptr);
+}
+
+static char	*ft_alloc(char *ptr, char const *s1, size_t i, size_t end)
+{
+	size_t	y;
+
 	y = 0;
 	while (i <= end)
 	{
@@ -80,4 +77,25 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	ptr[y] = '\0';
 	return (ptr);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	size_t	i;
+	size_t	last;
+	size_t	end;
+	char	*ptr;
+
+	ptr = NULL;
+	if (!s1 || !set)
+		return (NULL);
+	last = ft_strlen(s1) - 1;
+	i = ft_start(s1, set);
+	if (i == last + 1)
+		return (ft_valid(ptr));
+	end = ft_end(s1, set, last);
+	ptr = malloc(end - i + 2);
+	if (!ptr)
+		return (NULL);
+	return (ft_alloc(ptr, s1, i, end));
 }

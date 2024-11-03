@@ -6,7 +6,7 @@
 /*   By: abenba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:58:19 by abenba            #+#    #+#             */
-/*   Updated: 2024/10/27 11:03:32 by abenba           ###   ########.fr       */
+/*   Updated: 2024/11/01 14:47:06 by abenba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ static void	ft_free(char **ptr)
 {
 	size_t	i;
 
+	if (ptr == NULL)
+		return ;
 	i = 0;
 	while (ptr[i])
 	{
@@ -74,8 +76,8 @@ static void	ft_free(char **ptr)
 
 static char	**ft_make(char const *s, char c, char **ptr, size_t len)
 {
-	size_t y;
-	size_t i;
+	size_t	y;
+	size_t	i;
 
 	y = 0;
 	i = 0;
@@ -87,7 +89,7 @@ static char	**ft_make(char const *s, char c, char **ptr, size_t len)
 		if (ptr[y] == NULL)
 		{
 			ft_free(ptr);
-			break ;
+			return (NULL);
 		}
 		y++;
 	}

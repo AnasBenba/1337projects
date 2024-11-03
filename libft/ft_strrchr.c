@@ -15,20 +15,20 @@ char	*ft_strrchr(const char *s, int c)
 {
 	int		i;
 	int		index;
-	char	r;
 	char	*str;
 
 	i = 0;
 	index = 0;
-	r = (char)c;
 	str = (char *)s;
 	while (str[i])
 	{
-		if (str[i] == r)
+		if (str[i] == (char)c)
 			index = i;
 		i++;
 	}
-	if (index == 0)
+	if ((char)c == '\0')
+		return (&str[i]);
+	if (index == 0 && str[index] != (char)c)
 		return (NULL);
 	return (&str[index]);
 }
