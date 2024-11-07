@@ -16,7 +16,7 @@ void	*ft_calloc(size_t count, size_t size)
 	size_t	s;
 	void	*ptr;
 
-	if (size != 0 && (SIZE_MAX / size < count))
+	if (count != 0 && (SIZE_MAX / count < size))
 		return (NULL);
 	s = count * size;
 	ptr = malloc(s);

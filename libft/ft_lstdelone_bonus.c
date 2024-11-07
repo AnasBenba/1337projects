@@ -16,9 +16,6 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*))
 	if (lst && del)
 	{
 		(*del)(lst->content);
-		lst->next = NULL;
-		lst->content = NULL;
 		free(lst);
-		lst = NULL;
 	}
 }

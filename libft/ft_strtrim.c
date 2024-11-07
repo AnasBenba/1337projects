@@ -55,15 +55,6 @@ static size_t	ft_end(char const *s1, char const *set, size_t last)
 	return (end);
 }
 
-static char	*ft_valid(char *ptr)
-{
-	ptr = malloc(1);
-	if (!ptr)
-		return (NULL);
-	ptr[0] = '\0';
-	return (ptr);
-}
-
 static char	*ft_alloc(char *ptr, char const *s1, size_t i, size_t end)
 {
 	size_t	y;
@@ -94,7 +85,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	last = ft_strlen(s1) - 1;
 	i = ft_start(s1, set);
 	if (i == last + 1)
-		return (ft_valid(ptr));
+		return (ft_strdup(""));
 	end = ft_end(s1, set, last);
 	ptr = malloc(end - i + 2);
 	if (!ptr)

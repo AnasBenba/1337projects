@@ -6,7 +6,7 @@
 /*   By: abenba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 19:52:44 by abenba            #+#    #+#             */
-/*   Updated: 2024/10/28 19:53:54 by abenba           ###   ########.fr       */
+/*   Updated: 2024/11/06 05:31:08 by abenba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -15,7 +15,7 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	size_t	len;
 
-	if (s == NULL)
+	if (!s || fd < 0)
 		return ;
 	len = ft_strlen(s);
 	write(fd, s, len);

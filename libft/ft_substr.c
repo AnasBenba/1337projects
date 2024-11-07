@@ -13,9 +13,7 @@
 
 static size_t	ft_check_len(size_t src_len, unsigned int start, size_t len)
 {
-	if (src_len < len)
-		len = src_len - start;
-	else if (len > src_len - start)
+	if (len > src_len - start)
 		len = src_len - start;
 	return (len);
 }
@@ -33,7 +31,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (start >= src_len)
 		return (ft_strdup(""));
 	len = ft_check_len(src_len, start, len);
-	ptr = malloc(len + 1);
+	ptr = (char *)malloc(len + 1);
 	if (!ptr)
 		return (NULL);
 	while (i < len && s[start])

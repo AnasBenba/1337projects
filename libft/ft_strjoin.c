@@ -6,7 +6,7 @@
 /*   By: abenba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 09:17:14 by abenba            #+#    #+#             */
-/*   Updated: 2024/10/26 10:00:30 by abenba           ###   ########.fr       */
+/*   Updated: 2024/11/06 05:46:40 by abenba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	ptr_len = ft_strlen(s1) + ft_strlen(s2);
-	ptr = malloc(ptr_len + 1);
+	ptr = (char *)malloc(ptr_len + 1);
 	if (!ptr)
 		return (NULL);
 	if (ptr_len == 0)

@@ -6,7 +6,7 @@
 /*   By: abenba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 19:49:06 by abenba            #+#    #+#             */
-/*   Updated: 2024/10/28 19:50:08 by abenba           ###   ########.fr       */
+/*   Updated: 2024/11/06 05:29:51 by abenba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putendl_fd(char *s, int fd)
 	size_t	len;
 	size_t	i;
 
-	if (s == NULL)
+	if (!s || fd < 0)
 		return ;
 	len = ft_strlen(s);
 	i = 0;

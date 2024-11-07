@@ -26,7 +26,7 @@ static char	*ft_word(char const *s, char c, size_t *i)
 	}
 	*i = *i - word;
 	y = 0;
-	ptr = malloc(word + 1);
+	ptr = (char *)malloc(word + 1);
 	if (!ptr)
 		return (NULL);
 	while (s[(*i)] && s[(*i)] != c)
@@ -105,7 +105,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	len = ft_count_word(s, c);
-	ptr = malloc(sizeof(char *) * (len + 1));
+	ptr = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!ptr)
 		return (NULL);
 	return (ft_make(s, c, ptr, len));

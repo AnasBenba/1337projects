@@ -6,7 +6,7 @@
 /*   By: abenba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 07:41:25 by abenba            #+#    #+#             */
-/*   Updated: 2024/10/26 09:15:12 by abenba           ###   ########.fr       */
+/*   Updated: 2024/11/06 05:37:02 by abenba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strdup(const char *s1)
 	size_t	i;
 
 	i = ft_strlen(s1);
-	copy = ft_calloc(i + 1, sizeof(char));
+	copy = (char *)ft_calloc(i + 1, sizeof(char));
 	if (!copy)
 		return (NULL);
 	i = 0;
