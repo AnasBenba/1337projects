@@ -3,15 +3,14 @@
 int main()
 {
     int fd = open("file.txt", O_RDONLY);
-    char *s;
-    s = get_next_line(fd);
-    while (s)
-    {
-        printf("%s", s);
-        free(s);
-        s = get_next_line(fd);
-    }
-    free(s);
-    close(fd);
+ //   char *s;
+   // s = get_next_line(fd);
+    //while (s)
+    //{
+    char * line;
+    line = get_next_line(fd);
+        printf("%s", line);
+        free(line);
+    //}
     return (0);
 }
