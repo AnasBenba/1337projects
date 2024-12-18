@@ -30,20 +30,22 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*fill_buffer(int fd, char *left)
+char	*fill_buffer(int fd, char *left, char *buffer)
 {
 	int		chr_read;
 	char	*tmp;
-	char	*buffer;
 
 	chr_read = 1;
-	while ((chr_read))
+	while (chr_read)
 	{
-		buffer = (char *)malloc(((size_t)BUFFER_SIZE + 1) * sizeof(char));
-		if (!buffer)
-			return (NULL);
 		chr_read = read(fd, buffer, BUFFER_SIZE);
-		if (chr_read == 0 || chr_read == -1)
+		if (chr_read < 0)
+		{
+			free(left);
+			left = NULL;
+			break ;
+		}
+		if (chr_read == 0)
 			break ;
 		buffer[chr_read] = '\0';
 		if (!left)
@@ -53,8 +55,6 @@ char	*fill_buffer(int fd, char *left)
 		free(tmp);
 		if (ft_strchr(left, '\n'))
 			break ;
-		else
-			free(buffer);
 	}
 	return (free(buffer), buffer = NULL, left);
 }
@@ -65,9 +65,9 @@ char	*make_line(char *left, char **line)
 	char	*tmp;
 
 	i = 0;
-	while (left[i] != '\n' && left[i] != '\0')
+	while (left && left[i] != '\n' && left[i] != '\0')
 		i++;
-	if (left[i] == '\0')
+	if (left && left[i] == '\0')
 	{
 		if (left[0] == '\0')
 			*line = NULL;
@@ -76,7 +76,7 @@ char	*make_line(char *left, char **line)
 		free(left);
 		left = NULL;
 	}
-	else
+	else if (left)
 	{
 		*line = ft_substr(left, 0, i + 1);
 		tmp = left;
@@ -90,13 +90,17 @@ char	*get_next_line(int fd)
 {
 	static char	*left[1024];
 	char		*line;
+	char		*buffer;
 
 	line = NULL;
 	if (fd > 1024)
 		return (NULL);
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (free(left[fd]), left[fd] = NULL, NULL);
-	left[fd] = fill_buffer(fd, left[fd]);
+	buffer = (char *)malloc(((size_t)BUFFER_SIZE + 1) * sizeof(char));
+	if (!buffer)
+		return (NULL);
+	left[fd] = fill_buffer(fd, left[fd], buffer);
 	if (!left[fd])
 		return (NULL);
 	left[fd] = make_line(left[fd], &line);

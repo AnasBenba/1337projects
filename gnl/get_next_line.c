@@ -41,6 +41,7 @@ char	*fill_buffer(int fd, char *left, char *buffer)
 		if (chr_read == -1)
 		{
 			free(left);
+			left = NULL;
 			break ;
 		}
 		if (chr_read == 0)
@@ -65,7 +66,7 @@ char	*make_line(char *left, char **line)
 	i = 0;
 	while (left[i] != '\n' && left[i] != '\0')
 		i++;
-	if (left[i] == '\0')
+	if (left && left[i] == '\0')
 	{
 		if (left[0] == '\0')
 			*line = NULL;
@@ -74,7 +75,7 @@ char	*make_line(char *left, char **line)
 		free(left);
 		left = NULL;
 	}
-	else
+	else if (left)
 	{
 		*line = ft_substr(left, 0, i + 1);
 		tmp = left;
