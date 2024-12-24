@@ -9,9 +9,6 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
-$(OBJ): $(SRC)
-	$(CC) $(CFLAGS) -c $< -o $@
-
 clean:
 	rm -f $(OBJ)
 
